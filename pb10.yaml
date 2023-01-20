@@ -1,0 +1,27 @@
+---
+- name: Play to manage users and groups
+  hosts: host2
+  tasks: 
+    - name: Create a user called joy
+      user:
+         name: joy
+         uid: 6002
+         groups: wheel
+         state: present
+
+- name: Play to install soft
+  hosts: host1
+  tasks:
+    - name: Install tree 
+      dnf:
+        name: tree
+        state: absent
+    - name: Install httpd
+      dnf:
+        name: httpd
+        state: absent
+    - name: Install samba
+      dnf:
+        name: samba
+        state: absent
+...
